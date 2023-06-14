@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwawlwsvo0yu7"]
+
+[ext_resource type="Script" path="res://MeshCode.gd" id="1_dcbta"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_mchp0"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7o5x2"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_7o5x2")
+script = ExtResource("1_dcbta")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.907777, 0.419452, 0, -0.419452, 0.907777, 0.361473, 2.26598, 3.41935)
+current = true
+fov = 83.4421
+script = ExtResource("2_mchp0")

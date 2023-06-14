@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu8xggw18baao"]
+
+[ext_resource type="Script" path="res://Camera3D.gd" id="1_1fd2h"]
+[ext_resource type="Script" path="res://4Dto3D.gd" id="1_w2kg2"]
+[ext_resource type="PackedScene" uid="uid://c7c1uhowvmf1w" path="res://4d_shape_instance.tscn" id="2_4jbge"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pmkcm"]
+
+[sub_resource type="Sky" id="Sky_ehnbe"]
+sky_material = SubResource("ProceduralSkyMaterial_pmkcm")
+
+[sub_resource type="Environment" id="Environment_3wfac"]
+background_mode = 2
+background_color = Color(0.482353, 0.65098, 1, 1)
+background_energy_multiplier = 2.34
+sky = SubResource("Sky_ehnbe")
+
+[node name="Node4Dto3D" type="Node3D"]
+script = ExtResource("1_w2kg2")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera4DScene" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.882948, 0.469472, 0, -0.469472, 0.882948, 0, 4, 4)
+rotation_order = 1
+environment = SubResource("Environment_3wfac")
+current = true
+fov = 89.0816
+script = ExtResource("1_1fd2h")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 435.0
+offset_right = 208.0
+offset_bottom = 643.0
+text = "A/Z - X Axis
+S/X - Y Axis
+D/C - Z Axis
+F/ V - W Axis
+G/B - Move through plane
+F9   - 3D to 2D
+F10 - 4D to 3D
+F11 - Scene"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 944.0
+offset_top = 458.0
+offset_right = 1136.0
+offset_bottom = 640.0
+text = "   1 - Tesseract *
+   2 - 3-Sphere *
+   3 - Pentachoron
+   4 - Icositetrachoron
+   5 - Stretched Sphere
+   6 - Stretched Teapot
+* F2 - Wireframe Shadow"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6, -3)
+
+[node name="4DShape" parent="." instance=ExtResource("2_4jbge")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+render_target_update_mode = 4

@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://chbfb54viwbto"]
+
+[ext_resource type="Script" path="res://MeshCode.gd" id="1_di2u1"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_s7xl4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbhcs"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7o5x2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nkgw4"]
+
+[sub_resource type="Sky" id="Sky_8wj2t"]
+sky_material = SubResource("ProceduralSkyMaterial_nkgw4")
+
+[sub_resource type="Environment" id="Environment_86fxc"]
+background_mode = 2
+background_color = Color(0.482353, 0.65098, 1, 1)
+background_energy_multiplier = 2.34
+sky = SubResource("Sky_8wj2t")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_sbhcs")
+mesh = SubResource("ArrayMesh_7o5x2")
+script = ExtResource("1_di2u1")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.882948, 0.469472, 0, -0.469472, 0.882948, -9.53674e-07, 18.1624, 12.4858)
+rotation_order = 1
+environment = SubResource("Environment_86fxc")
+current = true
+fov = 89.0816
+script = ExtResource("2_s7xl4")
+
+[node name="Sliders" type="Node2D" parent="."]
+
+[node name="HSlider" type="HSlider" parent="Sliders"]
+offset_left = 4.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 44.0
+max_value = 360.0
+
+[node name="HSlider2" type="HSlider" parent="Sliders"]
+offset_left = 4.0
+offset_top = 44.0
+offset_right = 180.0
+offset_bottom = 68.0
+max_value = 360.0
+
+[node name="HSlider3" type="HSlider" parent="Sliders"]
+offset_left = 4.0
+offset_top = 67.0
+offset_right = 180.0
+offset_bottom = 91.0
+max_value = 360.0
+
+[node name="HSlider4" type="HSlider" parent="Sliders"]
+offset_left = 4.0
+offset_top = 91.0
+offset_right = 180.0
+offset_bottom = 115.0
+max_value = 360.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3188, -4.67779, 2.23279)

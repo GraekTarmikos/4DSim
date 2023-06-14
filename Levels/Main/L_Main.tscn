@@ -1,0 +1,213 @@
+[gd_scene load_steps=11 format=3 uid="uid://chqeluahxua1p"]
+
+[ext_resource type="PackedScene" uid="uid://d1t3cxrtadcf5" path="res://Player3D.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://scfepjnqt521" path="res://Levels/Main/Geometry/Floor.tscn" id="2"]
+[ext_resource type="Environment" uid="uid://d1000oqesryjm" path="res://Levels/Main/Environment.tres" id="3"]
+[ext_resource type="Script" path="res://Levels/Main/L_Main.gd" id="4"]
+[ext_resource type="PackedScene" path="res://Levels/Main/Geometry/Wall.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Levels/Main/Geometry/Cube.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c7c1uhowvmf1w" path="res://4d_shape_instance.tscn" id="7_rfghy"]
+[ext_resource type="Script" path="res://Levels/Main/Slider.gd" id="8_u013k"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wln0w"]
+color = Color(1, 0, 0, 1)
+thickness = 9
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_58nth"]
+color = Color(0, 0, 1, 1)
+thickness = 9
+
+[node name="L_Main" type="Node3D"]
+script = ExtResource("4")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+gravity_multiplier = 2.0
+jump_height = 12
+
+[node name="ArenaGeometry" type="Node3D" parent="."]
+
+[node name="Floor1" parent="ArenaGeometry" instance=ExtResource("2")]
+
+[node name="Wall1" parent="ArenaGeometry" instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -20)
+
+[node name="Wall2" parent="ArenaGeometry" instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 20)
+
+[node name="Wall3" parent="ArenaGeometry" instance=ExtResource("5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 5.75, 0)
+
+[node name="Wall4" parent="ArenaGeometry" instance=ExtResource("5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20, 5.75, 0)
+
+[node name="Cube1" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.25, -17.5)
+visible = false
+
+[node name="Slope1" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(3.5, 0, 0, 0, 1.53209, -2.41045, 0, 1.28558, 2.87267, 0, 0.31, -13.92)
+visible = false
+
+[node name="Platform1" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(6.25, 0, 0, 0, 0.25, 0, 0, 0, 2, -13.25, 5.75, -17.5)
+
+[node name="Platform2" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(6.25, 0, 0, 0, 0.25, 0, 0, 0, 2, 13.25, 5.75, -17.5)
+visible = false
+
+[node name="Platform3" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(-2.73196e-07, 0, 2, 0, 0.25, 0, -6.25, 0, -8.74228e-08, -17.5, 5.75, -1.75)
+visible = false
+
+[node name="Platform4" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(-2.73196e-07, 0, 2, 0, 0.25, 0, -6.25, 0, -8.74228e-08, 17.5, 5.75, -1.75)
+visible = false
+
+[node name="SlopeEnd1" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 18, 3.5, 17.5)
+visible = false
+
+[node name="SlopeEnd2" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, -18, 3.5, 17.5)
+visible = false
+
+[node name="Slope2" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(-3.2476, -0.125, -1.74846e-07, -1.875, 0.216506, 0, 2.83914e-07, 1.09278e-08, -2, 12.87, 1.66, 17.5)
+visible = false
+
+[node name="Slope3" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(3.2476, 0.125, 0, -1.875, 0.216506, 0, 0, 0, 2, -12.87, 1.66, 17.5)
+visible = false
+
+[node name="Platform5" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 18, 3.5, 13.5)
+visible = false
+
+[node name="Platform6" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 14, 3.5, 13.5)
+visible = false
+
+[node name="Platform7" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 10, 3.5, 13.5)
+visible = false
+
+[node name="Platform8" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 6, 3.5, 13.5)
+visible = false
+
+[node name="Platform9" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 2, 3.5, 13.5)
+visible = false
+
+[node name="Platform10" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, -2, 3.5, 13.5)
+visible = false
+
+[node name="Platform11" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, -6, 3.5, 13.5)
+
+[node name="Platform12" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, -10, 3.5, 13.5)
+visible = false
+
+[node name="Platform13" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, -14, 3.5, 13.5)
+visible = false
+
+[node name="Platform14" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, -18, 3.5, 13.5)
+visible = false
+
+[node name="TooSteep1" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(-3.5, -0.216506, -3.01992e-07, -6.06218, 0.125, -1.51421e-07, 9.87455e-07, 2.32278e-08, -2, 16.5, 5.5, 8.5)
+visible = false
+
+[node name="TooSteep2" parent="ArenaGeometry" instance=ExtResource("6")]
+transform = Transform3D(3.5, 0.216506, 0, -6.06218, 0.125, 0, 0, 0, 2, -16.5, 5.5, 8.5)
+visible = false
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = ExtResource("3")
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.866026, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 0)
+shadow_enabled = true
+shadow_bias = 0.05
+directional_shadow_max_distance = 250.0
+
+[node name="Bridge" parent="." instance=ExtResource("7_rfghy")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -5, 0, -4.37114e-08, -8, 3, 10)
+plane_mode = 1
+shape_mode = 1
+shape = 4
+
+[node name="Icositetrachoron" parent="." instance=ExtResource("7_rfghy")]
+process_mode = 4
+transform = Transform3D(0.928408, 0, -0.371562, 0, 1, 0, 0.371562, 0, 0.928408, 9.44999, 2.55585, 10.6185)
+plane_mode = 1
+shape_mode = 1
+shape = 6
+rot = [2, 2, 2, 2]
+
+[node name="Pendulum2" parent="." instance=ExtResource("7_rfghy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00748, 3.55387, -13.6721)
+plane_mode = 1
+shape_mode = 1
+pendulum = {
+"axis": 3,
+"cyclespeed": 1,
+"distance": 1,
+"speed": 1,
+"yes": true
+}
+wireframeEnabled = true
+
+[node name="Pendulum1" parent="." instance=ExtResource("7_rfghy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4315, 3.4091, -10.0248)
+plane_mode = 1
+shape_mode = 1
+pendulum = {
+"axis": 0,
+"cyclespeed": 2,
+"distance": 4,
+"speed": 1,
+"yes": true
+}
+
+[node name="Tesseract" parent="." instance=ExtResource("7_rfghy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33903, 2.12925, 0)
+plane_mode = 1
+shape_mode = 1
+rot = [3, 3, 3, 3]
+wireframeEnabled = true
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 432.0
+offset_top = 593.0
+offset_right = 720.0
+offset_bottom = 628.0
+theme_override_styles/slider = SubResource("StyleBoxLine_wln0w")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_58nth")
+min_value = -2.0
+max_value = 2.0
+step = 0.05
+script = ExtResource("8_u013k")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 576.0
+offset_right = 650.0
+offset_bottom = 602.0
+text = "Mouse Scroll Wheel"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 555.0
+offset_right = 117.0
+offset_bottom = 633.0
+text = "F9   - 3D to 2D
+F10 - 4D to 3D
+F11 - Scene"

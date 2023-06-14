@@ -1,0 +1,10 @@
+res://3dto2d.tscn
+res://4DShape.gd
+res://4Dto3DProjection.gd
+res://Levels/Main/Environment.tres
+res://4Dto3D.tscn
+res://Levels/Main/L_Main.tscn
+res://4d_shape_instance.tscn
+res://3DShape.gd
+res://4Dto3D.gd
+res://Levels/Main/L_Main.gd

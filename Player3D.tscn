@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1t3cxrtadcf5"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_y4kt4"]
+[ext_resource type="Script" path="res://CameraChar.gd" id="2_qjvkw"]
+[ext_resource type="Script" path="res://Sprint.gd" id="3_nko87"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dx8s4"]
+
+[node name="Player3D" type="CharacterBody3D"]
+script = ExtResource("1_y4kt4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_dx8s4")
+
+[node name="Head" type="Node3D" parent="."]
+script = ExtResource("2_qjvkw")
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="Sprint" type="Node" parent="."]
+script = ExtResource("3_nko87")

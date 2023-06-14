@@ -1,0 +1,14 @@
+res://Levels/Main/Geometry/Cube.tscn::d87104bd4aeec4d9ebcf7c4a146c7559::1681932384::res://.godot/exported/133200997/export-aca5e29b59c5936ac148fda957a46756-Cube.scn
+res://Levels/Main/Geometry/Floor.tscn::4052012b4506c923946bd0450b22d684::1681936727::res://.godot/exported/133200997/export-d811013d7a6c9005740bc690cc923da9-Floor.scn
+res://Levels/Main/Geometry/Wall.tscn::cc52a6c9c79b2e6b4300f7f7cf3af23f::1681932384::res://.godot/exported/133200997/export-83b26722e0a12aea1c6152a2a7d627e9-Wall.scn
+res://Levels/Main/Materials/M_Dark.tres::487d5a55e825664fd0ab341e80e464b2::1681932384::res://.godot/exported/133200997/export-01fafc04c28b60b9efdb51116fd73275-M_Dark.res
+res://Levels/Main/Environment.tres::085fe21d8b66197bf225bd06d176adfb::1686703490::res://.godot/exported/133200997/export-a42a26c7ce482ad8acac48d5d0d98402-Environment.res
+res://Levels/Main/L_Main.tscn::394d9191badbe5ea1dfa33a5bdc1b645::1686706246::res://.godot/exported/133200997/export-779a0e1f7bd88b28c4a1413c5fb169f2-L_Main.scn
+res://3dto2d.tscn::6cd990664a79cdc5525f151327b36fe4::1686706454::res://.godot/exported/133200997/export-e55c90fa7ef1cac3f42b30367a0a7fcf-3dto2d.scn
+res://3d_cube.tscn::e54b1214a21d7bece804fd4b3416e39f::1681959001::res://.godot/exported/133200997/export-5bf28d1b71c40a0e18026f00f0689088-3d_cube.scn
+res://4Dto3D.tscn::42f3c6173c81a9fb53c13e790d6eabd2::1686706246::res://.godot/exported/133200997/export-b1ae97be4bc9f33e4264ef84c46ccf74-4Dto3D.scn
+res://4d_shape_instance.tscn::05256af7a040fef0911dec6da76bbb10::1686706246::res://.godot/exported/133200997/export-22f8df5d8a5b6eb77b805db405b28066-4d_shape_instance.scn
+res://HypercubeProjection.tscn::04cfdf2769220cca769f355c7646f794::1680622515::res://.godot/exported/133200997/export-df033a9f515fe24f1f501f82120e1e1b-HypercubeProjection.scn
+res://maze3D.tscn::780b41bf8ab0a2d85432d2f1aa0c35d0::1682697338::res://.godot/exported/133200997/export-a0148a5b8b3800eb757c48ee6daa0896-maze3D.scn
+res://Player3D.tscn::1e87b2276f1134ff26b11323f488637e::1681933721::res://.godot/exported/133200997/export-fb9a1ecd61aefa6f3e700e06cf3d66a9-Player3D.scn
+res://tutorial.tscn::39314d681f398fd3a8fdca303f32d974::1682026354::res://.godot/exported/133200997/export-7d2e871219e9bd7bcea6e0a9676cd88c-tutorial.scn

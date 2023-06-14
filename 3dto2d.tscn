@@ -1,0 +1,176 @@
+[gd_scene load_steps=24 format=3 uid="uid://djw5yap718l3x"]
+
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_jl7ts"]
+[ext_resource type="Script" path="res://3Dplanecode.gd" id="4_6yy54"]
+[ext_resource type="Script" path="res://3DShape.gd" id="4_f4f2h"]
+[ext_resource type="Script" path="res://2DSlice.gd" id="5_i7qah"]
+[ext_resource type="Script" path="res://VectorDraw.gd" id="5_mp7hm"]
+[ext_resource type="Script" path="res://Character2D.gd" id="6_8byyj"]
+[ext_resource type="Script" path="res://3Dto2DProjection.gd" id="6_cnkl1"]
+[ext_resource type="Script" path="res://CollisionShape2D.gd" id="8_6qlxv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2yeho"]
+
+[sub_resource type="Sky" id="Sky_raif4"]
+sky_material = SubResource("ProceduralSkyMaterial_2yeho")
+
+[sub_resource type="Environment" id="Environment_ymejn"]
+background_mode = 2
+background_color = Color(0.482353, 0.65098, 1, 1)
+background_energy_multiplier = 2.34
+sky = SubResource("Sky_raif4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tahnh"]
+blend_mode = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xce1e"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_18u20"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bekei"]
+transparency = 1
+no_depth_test = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0hdhf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40xsj"]
+render_priority = 1
+depth_draw_mode = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ehxpg"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r2djb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgdgb"]
+size = Vector2(9, 10)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8twgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4ud"]
+size = Vector2(9, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1jef"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Node3Dto2D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00547737, 0.00109561, 0.00236781)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3188, -1.22207, -4.34949)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D2" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.882948, 0.469472, 0, -0.469472, 0.882948, -0.00547832, 18.1635, 19.0912)
+rotation_order = 1
+environment = SubResource("Environment_ymejn")
+current = true
+fov = 89.0816
+script = ExtResource("2_jl7ts")
+
+[node name="SubViewport2" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Camera3D2" type="Camera3D" parent="SubViewportContainer/SubViewport2"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 30, 100)
+rotation_order = 1
+environment = SubResource("Environment_ymejn")
+projection = 1
+current = true
+fov = 89.0816
+size = 3.0
+
+[node name="Plane3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.091, 0, 0, 0, 1.136, 0, 0, 0)
+size = Vector3(10, 10, 0.002)
+material = SubResource("StandardMaterial3D_tahnh")
+script = ExtResource("4_6yy54")
+
+[node name="VectorDraw" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xce1e")
+mesh = SubResource("ArrayMesh_18u20")
+script = ExtResource("5_mp7hm")
+
+[node name="3DCube" type="Node3D" parent="."]
+
+[node name="3DShape" type="MeshInstance3D" parent="3DCube"]
+material_override = SubResource("StandardMaterial3D_bekei")
+transparency = 0.57
+mesh = SubResource("ArrayMesh_0hdhf")
+skeleton = NodePath("")
+script = ExtResource("4_f4f2h")
+
+[node name="2DSlice" type="MeshInstance3D" parent="3DCube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+material_override = SubResource("StandardMaterial3D_40xsj")
+mesh = SubResource("ArrayMesh_ehxpg")
+skeleton = NodePath("../..")
+script = ExtResource("5_i7qah")
+
+[node name="Wireframe" type="MeshInstance3D" parent="3DCube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+mesh = SubResource("ArrayMesh_r2djb")
+script = ExtResource("6_cnkl1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="3DCube"]
+
+[node name="SliceCollision" type="CollisionShape2D" parent="3DCube/StaticBody2D"]
+position = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_qgdgb")
+script = ExtResource("8_6qlxv")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+visible = false
+script = ExtResource("6_8byyj")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(100, 100)
+scale = Vector2(9, 10)
+texture = SubResource("CanvasTexture_8twgu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_xh4ud")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 454.0
+offset_right = 208.0
+offset_bottom = 636.0
+text = "A/Z - X Axis
+S/X - Y Axis
+D/C - Z Axis
+G/B - Move through plane
+F9   - 3D to 2D
+F10 - 4D to 3D
+F11 - Scene"
+
+[node name="Label2" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 1003.0
+offset_top = 81.0
+offset_right = 1195.0
+offset_bottom = 263.0
+text = "   1 - Cube
+   2 - Tetrahedron
+   3 - Sphere
+   4 - Cilinder
+"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 100)
+material_override = SubResource("StandardMaterial3D_t1jef")
+cast_shadow = 0
+size = Vector3(3, 1, 3)

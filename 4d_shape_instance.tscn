@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7c1uhowvmf1w"]
+
+[ext_resource type="Script" path="res://4d_shape_instance.gd" id="1_bju4a"]
+[ext_resource type="Script" path="res://Hyperplane.gd" id="1_jssqr"]
+[ext_resource type="Script" path="res://4DShape.gd" id="2_c8507"]
+[ext_resource type="Script" path="res://3DSlice.gd" id="3_ab3hr"]
+[ext_resource type="Script" path="res://4Dto3DProjection.gd" id="4_8megh"]
+[ext_resource type="Script" path="res://ListOfShapes.gd" id="6_w30dc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7n0o"]
+cull_mode = 1
+specular_mode = 1
+vertex_color_use_as_albedo = true
+roughness = 0.53
+rim = 0.63
+rim_tint = 0.25
+ao_light_affect = 1.0
+backlight = Color(0.137255, 0.517647, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b63qp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6apcl"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ujamg"]
+
+[node name="4DShapeNode" type="Node3D"]
+script = ExtResource("1_bju4a")
+
+[node name="Hyperplane" type="Node" parent="."]
+script = ExtResource("1_jssqr")
+
+[node name="Shape" type="Node3D" parent="."]
+
+[node name="4DShape" type="Node" parent="Shape"]
+script = ExtResource("2_c8507")
+
+[node name="3DSlice" type="MeshInstance3D" parent="Shape"]
+material_override = SubResource("StandardMaterial3D_m7n0o")
+cast_shadow = 2
+mesh = SubResource("ArrayMesh_b63qp")
+script = ExtResource("3_ab3hr")
+
+[node name="Wireframe" type="MeshInstance3D" parent="Shape"]
+material_override = SubResource("StandardMaterial3D_6apcl")
+mesh = SubResource("ArrayMesh_ujamg")
+script = ExtResource("4_8megh")
+
+[node name="ListOfShapes" type="Node" parent="."]
+script = ExtResource("6_w30dc")

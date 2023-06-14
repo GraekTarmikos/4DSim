@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://7ghhhekf4gij"]
+
+[ext_resource type="Script" path="res://3DShape.gd" id="1_p0end"]
+[ext_resource type="Script" path="res://2DSlice.gd" id="2_em1ap"]
+[ext_resource type="Script" path="res://3Dto2DProjection.gd" id="3_3egta"]
+[ext_resource type="Script" path="res://CollisionShape2D.gd" id="4_8tpgu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_501as"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_27ep5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sityb"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x2pgy"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3u3ui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf63o"]
+size = Vector2(9, 10)
+
+[node name="3DCube" type="Node3D"]
+
+[node name="3DShape" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_501as")
+mesh = SubResource("ArrayMesh_27ep5")
+skeleton = NodePath("")
+script = ExtResource("1_p0end")
+
+[node name="2DSlice" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+material_override = SubResource("StandardMaterial3D_sityb")
+mesh = SubResource("ArrayMesh_x2pgy")
+script = ExtResource("2_em1ap")
+
+[node name="Wireframe" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+visible = false
+mesh = SubResource("ArrayMesh_3u3ui")
+skeleton = NodePath("")
+script = ExtResource("3_3egta")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="SliceCollision" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(-270, -270)
+shape = SubResource("RectangleShape2D_yf63o")
+script = ExtResource("4_8tpgu")
